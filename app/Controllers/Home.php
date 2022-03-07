@@ -6,11 +6,16 @@ class Home extends BaseController
 {
     public function index()
     {
-        return view('welcome_message');
+        return view('auth/login');
     }
 
     public function inicio(){
         echo "Hola mundo";
         echo "23 de febrero 2022";
+    }
+
+    public function admin()
+    {
+        return view('admin/index');
     }
 }
