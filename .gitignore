@@ -1,6 +1,6 @@
-<<<<<<< HEAD
+
 .env
-=======
+
 #-------------------------
 # Operating Specific Junk Files
 #-------------------------
@@ -128,4 +128,3 @@ nb-configuration.xml
 /phpunit*.xml
 /.phpunit.*.cache
 
->>>>>>> 4701a4c4e421374eb7e93569bba72271cb07c66a
