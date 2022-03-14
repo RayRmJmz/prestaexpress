@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
+
+    // * muestra vista de formulario de login
     public function index()
     {
         return view('auth/login');
@@ -14,8 +16,5 @@ class Home extends BaseController
         echo "23 de febrero 2022";
     }
 
-    public function admin()
-    {
-        return view('admin/index');
-    }
+
 }
