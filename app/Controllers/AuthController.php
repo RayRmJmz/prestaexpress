@@ -11,7 +11,7 @@ class AuthController extends BaseController
         // obtener datos del formulario
         $usuario = $this->request->getPost('usuario');
         $contrasena = $this->request->getPost('contrasena');
-        
+
         // Instanciar modelo empleado
         $empleadoModel = new EmpleadoModel();
 
@@ -34,8 +34,9 @@ class AuthController extends BaseController
 
         $session->empleado = $empleado;
 
+
+
+
         return  'Usuario encontrado' . $empleado->emp_nombre;
-
-
     }
 }
