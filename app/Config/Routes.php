@@ -39,11 +39,13 @@ $routes->get('/', 'Home::index');
 $routes->post('auth/login', 'AuthController::login');
 $routes->get('/auth/logout', 'AuthController::logout');
 
-$routes->get('/inicio', 'Home::inicio');
-
 
 // lógica para el login
 $routes->post('/login', 'AuthController::login');
+//ruta para cargar vistas
+$routes->get('(:any)', 'Home::view/$1');
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
