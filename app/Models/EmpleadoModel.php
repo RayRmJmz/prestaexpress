@@ -12,7 +12,7 @@ class EmpleadoModel extends Model
 
     // columna que identifica de manera unica a un registro en la tabla (usado p.e. para buscar registros)
     protected $primaryKey = 'id_empleado';
-    
+
     // indica si la tabla usa la opción auto-incrementable, si es false entonces se debe especificar el valor manualmente
     protected $useAutoIncrement = true;
 
@@ -47,5 +47,16 @@ class EmpleadoModel extends Model
 
         return $empleado;
     }
-    
+
+    public function getAllEmpleados()
+    {
+        $db = db_connect();
+        $data = $db->query('SELECT * FROM empleado');
+        //return $data;
+        foreach ($data as $row) {
+            $row->emp_nombre;
+        }
+
+        return "Consulta empleado";
+    }
 }

@@ -1,0 +1,24 @@
+/*  Este archivo de css es para configuraciones espcificas que no se obtiene con BOOTSTRAP
+*
+*
+*
+*/
+h1.uppercase {
+	text-transform: uppercase;
+}
+h2.uppercase {
+	text-transform: uppercase;
+}
+h3.uppercase {
+	text-transform: uppercase;
+}
+h4.uppercase {
+	text-transform: uppercase;
+}
+h5.uppercase {
+	text-transform: uppercase;
+}
+
+p.small {
+	font-size: smaller;
+}
