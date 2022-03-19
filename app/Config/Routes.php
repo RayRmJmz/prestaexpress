@@ -31,18 +31,24 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-// vista con el formulario
-$routes->get('/', 'Home::index');
-
-
-
-$routes->post('auth/login', 'AuthController::login');
-$routes->get('/auth/logout', 'AuthController::logout');
-
-
+$routes->get('/', 'Home::index'); // retorna la vista del formulario de login
 
 // lógica para el login
-$routes->post('/login', 'AuthController::login');
+$routes->post('auth/login', 'AuthController::login'); // procesa la información recibida del formulario de login para autenticar a los usuarios
+$routes->get('/auth/logout', 'AuthController::logout'); // destruye la sesión del usuario
+
+$routes->get('/admin', 'Home::admin');
+
+// Opción 2 trabajar con controladores y modelos
+// CRUD Empleados
+$routes->get('/empleados', 'EmpleadoController::index'); // retorna el indice (tabla) de empleados
+$routes->get('/empleados/crear', 'EmpleadoController::crear'); // retorna el formulario de crear nuevo empleado
+$routes->post('/empleados/registrar', 'EmpleadoController::registrar'); // procesar la información del formulario de nuevo empleado
+$routes->get('empleados/editar/(:num)', 'EmpleadoController::editar/$1'); // retorna el formulario para editar y la información del empleado a editar
+$routes->post('empleados/actualizar/(:num)', 'EmpleadoController::actualizar/$1'); // procesar la información del formulario
+$routes->get('empleados/eliminar/(:num)', 'EmpleadoController::eliminar/$1'); // eliminar un empleado por id
+
+// Opción Trabajar vistas mediante Api
 //ruta para cargar vistas
 $routes->get('(:any)', 'Home::view/$1');
 

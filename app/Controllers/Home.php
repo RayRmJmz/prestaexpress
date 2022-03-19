@@ -26,4 +26,9 @@ class Home extends BaseController
         echo view('pages/' . $page); // carga el contenido que tenemos en nuestra app
         echo view('pages/footer'); // carga el pie de pagina de la app
     }
+
+    public function admin()
+    {
+        return view('admin');
+    }
 }

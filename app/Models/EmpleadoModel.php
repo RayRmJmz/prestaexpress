@@ -26,28 +26,29 @@ class EmpleadoModel extends Model
 
     // indica si la fecha actual sera añadida automaticamente en los 'inserts' y 'updates',
     // si es true, requiere que la tabla contenga columnas 'created_at', 'updated_at'
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
 
     // especifica el campo  que guarda la fecha en que se inserta un registro a la bd
     protected $createdField = 'fecha_ingreso';
 
+    protected $updatedField = false;
+
     // especifica el campo  que guarda la fecha en que se actualiza un registro a la bd
     protected $deletedField = 'fecha_egreso';
+
+    protected $allowedFields    =
+    [
+        'usuario',
+        'emp_nombre',
+        'estado',
+        'contrasena'
+    ];
 
     /* 
       * Métodos especificos del modelo
      */
 
-    // * Buscar empleado por nombre de usuario
-    public function obtenerEmpleado($usuario)
-    {
-        // burcar el primer registro en el que el nombre de usuario coincida
-        $empleado = $this->where('usuario', $usuario)
-            ->first();
-
-        return $empleado;
-    }
-
+    // función para ApiController
     public function getAllEmpleados()
     {
         $db = db_connect();
