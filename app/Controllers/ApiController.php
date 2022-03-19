@@ -36,4 +36,21 @@ class ApiController extends BaseController
         // * regresar al cliente una respues en formato JSON
         return $this->response->setJSON($empleado);
     }
+
+
+    public function ejemplo()
+    {
+        /* {
+            LLAVE : VALOR,
+            LLAVE2 : VALOR 
+            }
+        */
+        $data = [
+            'success' => true,
+            'id' => 123,
+            'TELEFONO' => 312555555,
+        ];
+
+        return $this->response->setJSON($data);
+    }
 }

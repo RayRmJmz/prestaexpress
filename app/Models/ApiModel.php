@@ -12,7 +12,7 @@ class ApiModel extends Model
     {
         $db = db_connect(); // * Conectarse ala BD
 
-        $query = $db->query('SELECT * FROM empleado ORDER BY emp_nombre'); // * Ejecuta la consulta
+        $query = $db->query('SELECT * FROM empleado   ORDER BY emp_nombre'); // * Ejecuta la consulta
 
         $results = $query->getResult(); // * convierte la consulta a un objeto array
 

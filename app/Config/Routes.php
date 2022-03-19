@@ -47,7 +47,7 @@ $routes->post('/login', 'AuthController::login');
 $routes->get('(:any)', 'Home::view/$1');
 
 $routes->post('api/readEmpleados', 'ApiController::readEmpleados');
-
+$routes->post('api/ejemplo', 'ApiController::ejemplo');
 
 /*
  * --------------------------------------------------------------------

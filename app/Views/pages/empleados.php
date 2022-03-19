@@ -35,19 +35,18 @@
 
 <script>
     function btnCall($id) {
-        console.log($id);
-        /*
+        console.log("hola");
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
-            //console.log(this.responseText);
+            console.log(this.responseText);
             let json = JSON.parse(this.responseText);
             //console.log(Object.keys(json['datos']).length);
-            console.log(json['response']['result']);
+            // console.log(json['response']['result']);
         }
 
-        xhttp.open("POST", base_URL + "api/deleteEmpleado" + $id);
+        xhttp.open("POST", base_URL + "api/ejemplo");
         xhttp.send();
-        */
+
     }
 </script>
 <script>
@@ -58,6 +57,7 @@
         xhttp.onload = function() {
             //console.log(this.responseText);
             let json = JSON.parse(this.responseText);
+            console.log(this.responseText);
             //console.log(Object.keys(json['datos']).length);
             console.log(json['response']['result']);
             switch (json['response']['result']) {
