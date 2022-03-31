@@ -5,6 +5,7 @@
 <!-- DIV para contenido de la app [tablas, forms, etc.] -->
 <div class="container  px-4  gy-5">
     <h4>Tabla empleados</h4>
+    <?= getenv('app.baseURL'); ?>
     <button class="btn btn-primary">Registrar empleado</button>
     <table class="table table-hover" id="tablaEmpleados" name="tablaEmpleados">
         <thead>

@@ -60,14 +60,23 @@
         </div>
     </nav>
     <!-- También se pueden importar componentes -->
-    <?php echo $this->include('componentes/alerta'); ?>
+    <?php if (session('error')) : ?>
+        <div class="container alert alert-danger" role="alert">
+            <?php echo session('error'); ?>
+        </div>
+    <?php endif; ?>
+    <?php if (session('success')) : ?>
+        <div class="container alert alert-success" role="alert">
+            <?php echo session('success'); ?>
+        </div>
+    <?php endif; ?>
     <!-- Fin Navbar -->
     <!-- Inicio Contenido -->
     <?php echo $this->renderSection('contenido'); ?>
     <!-- Fin Contenido -->
 
     <!-- Inicio footer -->
-    <div class="container border-top">
+    <div class="container border-top mt-3">
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>

@@ -34,8 +34,27 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index'); // retorna la vista del formulario de login
 
 // lógica para el login
-$routes->post('auth/login', 'AuthController::login'); // procesa la información recibida del formulario de login para autenticar a los usuarios
+$routes->post('/auth/login', 'AuthController::login'); // procesa la información recibida del formulario de login para autenticar a los usuarios
 $routes->get('/auth/logout', 'AuthController::logout'); // destruye la sesión del usuario
+
+// CRUD Prestamos
+$routes->get('/puestos', 'PuestoController::index');
+$routes->get('/puestos/crear', 'PuestoController::crear');
+$routes->post('/puestos/registrar', 'PuestoController::registrar');
+$routes->get('/puestos/editar/(:num)', 'PuestoController::editar/$1');
+$routes->post('/puestos/actualizar/(:num)', 'PuestoController::actualizar/$1');
+$routes->get('/puestos/eliminar/(:num)', 'PuestoController::eliminar/$1');
+
+// CRUD Prestamos
+$routes->get('/prestamos', 'PrestamoController::index');
+$routes->get('/solicitud', 'PrestamoController::solicitud');
+
+
+
+
+
+
+
 
 $routes->get('/admin', 'Home::admin');
 
@@ -50,7 +69,7 @@ $routes->get('empleados/eliminar/(:num)', 'EmpleadoController::eliminar/$1'); //
 
 // Opción Trabajar vistas mediante Api
 //ruta para cargar vistas
-$routes->get('(:any)', 'Home::view/$1');
+$routes->get('/vistas/(:any)', 'Home::view/$1');
 
 $routes->post('api/readEmpleados', 'ApiController::readEmpleados');
 $routes->post('api/ejemplo', 'ApiController::ejemplo');

@@ -34,10 +34,10 @@ class AuthController extends BaseController
             return redirect()->to(base_url('/'));
         endif;
 
-        // Si el usuario y la contraseña son correcos
+        // Si el usuario y la contraseña son correctos
         // se crea una sesión con la info del usuario
         $session->empleado = $empleado;
-
+        
         // redirigimos a la vista de administración
         return redirect()->to(base_url('/admin'));
     }
