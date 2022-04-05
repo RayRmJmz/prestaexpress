@@ -47,7 +47,7 @@ $routes->get('/puestos/eliminar/(:num)', 'PuestoController::eliminar/$1');
 
 // CRUD Prestamos
 $routes->get('/prestamos', 'PrestamoController::index');
-$routes->get('/solicitud', 'PrestamoController::solicitud');
+$routes->get('/solicitud', 'PrestamoController::solicitud', ['filter' => 'validarSolicitud']);
 
 
 

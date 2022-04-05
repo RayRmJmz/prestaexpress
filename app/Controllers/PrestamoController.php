@@ -19,6 +19,7 @@ class PrestamoController extends BaseController
 
     public function solicitud()
     {
+        if (session('motivos')) return view('prestamo/solicitudNegada');
         $puestoModel = new PuestoModel();
         $puesto = $puestoModel->select('puesto.*')
             ->join('det_emp_puesto', 'puesto.id_puesto = det_emp_puesto.id_puesto')
