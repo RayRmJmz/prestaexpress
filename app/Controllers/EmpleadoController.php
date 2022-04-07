@@ -22,12 +22,10 @@ class EmpleadoController extends BaseController
         // son los que no estan vigentes
         // ** Armamos la consulta 
         $data['empleados'] = $empleadoModel
-            ->select('empleado.*, puesto.pst_nombre')
-            ->join('det_emp_puesto', 'empleado.id_empleado = det_emp_puesto.id_empleado')
-            ->join('puesto', 'puesto.id_puesto = det_emp_puesto.id_puesto')
-            ->where('det_emp_puesto.fecha_fin is', null)
-            ->orderBy('det_emp_puesto.id_det_emp_puesto', 'desc')
-            ->groupBy('empleado.id_empleado')
+            ->select('empleado.*, p.pst_nombre')
+            ->join('det_emp_puesto as dep', 'dep.id_empleado = empleado.id_empleado')
+            ->join('puesto as p', 'p.id_puesto = dep.id_puesto')
+            ->orderBy('empleado.id_empleado', 'desc')
             ->paginate(7);
         // print_r($data['empleados']);
         // return;
