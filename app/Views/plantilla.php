@@ -33,10 +33,10 @@
                         <a class="nav-link " aria-current="page" href="<?php echo base_url('admin'); ?>">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="#">Solicitudes</a>
+                        <a class="nav-link " aria-current="page" href="<?php echo base_url('solicitud'); ?>">Solicitud</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="#">Préstamos</a>
+                        <a class="nav-link " aria-current="page" href="<?php echo base_url('prestamos'); ?>">Préstamos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="#">Reportes</a>

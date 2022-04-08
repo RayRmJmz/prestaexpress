@@ -48,11 +48,14 @@ $routes->get('/puestos/eliminar/(:num)', 'PuestoController::eliminar/$1');
 // CRUD Prestamos
 $routes->get('/prestamos', 'PrestamoController::index');
 $routes->get('/solicitud', 'PrestamoController::solicitud', ['filter' => 'validarSolicitud']);
+$routes->post('/prestamos/registrar', 'PrestamoController::registrar');
+$routes->get('/prestamos/aprobar/(:num)', 'PrestamoController::aprobar/$1');
+$routes->get('/prestamos/eliminar/(:num)', 'PrestamoController::eliminar/$1');
+$routes->get('/prestamos/detalles/(:num)', 'PrestamoController::detalles/$1');
 
-
-
-
-
+// Rutas de abonos
+$routes->get('/abono/(:num)', 'AbonoController::index/$1');
+$routes->get('/abono/registrar/(:num)', 'AbonoController::registrar/$1');
 
 
 

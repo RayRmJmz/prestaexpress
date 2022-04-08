@@ -28,6 +28,18 @@
                         <td><?= $prestamo->fecha_ini_desc . '-' . $prestamo->fecha_fin_desc; ?></td>
                         <td><?= $prestamo->monto; ?></td>
                         <td><?= $prestamo->estado; ?></td>
+                        <td>
+                            <?php if (session('empleado')->puesto == 'Administrador') : ?>
+                                <?php if ($prestamo->estado == 'SOLICITUD') : ?>
+                                    <a href="<?php echo base_url('prestamos/aprobar/' . $prestamo->id_prestamo); ?>" class="btn btn-outline-success btn-sm">Aprobar</a>
+                                <?php endif; ?>
+                                <?php if ($prestamo->estado == 'APROBADO') : ?>
+                                    <a href="<?php echo base_url('abono/' . $prestamo->id_prestamo); ?>" class="btn btn-outline-warning btn-sm">Abonar</a>
+                                <?php endif; ?>
+                                <a href="<?php echo base_url('prestamos/eliminar/' . $prestamo->id_prestamo); ?>" class="btn btn-outline-danger btn-sm">Eliminar</a>
+                            <?php endif; ?>
+                            <a href="<?php echo base_url('prestamos/detalles/' . $prestamo->id_prestamo); ?>" class="btn btn-outline-primary btn-sm">Detalles</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             <?php else : ?>
