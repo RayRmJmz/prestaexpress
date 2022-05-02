@@ -57,4 +57,9 @@ class AuthController extends BaseController
     }
 
     // Aquí va a ir la función para cerra sesión
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to(base_url('/'));
+    }
 }
