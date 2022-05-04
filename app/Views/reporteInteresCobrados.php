@@ -10,7 +10,6 @@
             <tr>
                 <td>#</td>
                 <td>Periodo</td>
-                <td>Abonos recibidos</td>
                 <td>Monto total</td>
                 <td>Intereses cobrados</td>
             </tr>
@@ -18,11 +17,10 @@
         <tbody>
             <?php foreach ($interesesCobrados as $i => $datos) : ?>
                 <tr>
-                    <td><?= $i; ?></td>
+                    <td><?= $i + 1; ?></td>
                     <td><?= $datos->periodo; ?></td>
-                    <td><?= $datos->abonos ?></td>
                     <td><?= $datos->total; ?></td>
-                    <td><?= $datos->intereses ?></td>
+                    <td><?= $datos->interesesCobrados ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

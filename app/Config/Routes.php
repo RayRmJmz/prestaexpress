@@ -70,7 +70,9 @@ $routes->get('empleados/editar/(:num)', 'EmpleadoController::editar/$1'); // ret
 $routes->post('empleados/actualizar/(:num)', 'EmpleadoController::actualizar/$1'); // procesar la información del formulario
 $routes->get('empleados/eliminar/(:num)', 'EmpleadoController::eliminar/$1'); // eliminar un empleado por id
 
-$routes->get('/reportes/prestamos-activos', 'Home::prestamosActivos');
+// * RUTAS DE REPORTES
+$routes->get('/reportes', 'Home::reportes');
+$routes->get('/reportes/prestamos-por-empleado', 'Home::prestamosPorEmpleado');
 $routes->get('/reportes/intereses-cobrados', 'Home::interesesCobrados');
 
 // Opción Trabajar vistas mediante Api

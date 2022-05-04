@@ -2,9 +2,8 @@
 
 namespace App\Controllers;
 
-// modelos usados para generar los reportes
 use App\Models\PrestamoModel;
-use App\Models\AbonoModel;
+use  App\Models\AbonoModel;
 
 class Home extends BaseController
 {
@@ -36,41 +35,40 @@ class Home extends BaseController
         return view('admin');
     }
 
-    /** 
-     * REPORTES
-     */
+    // * FUNCIONES DE REPORTES
+    public function reportes()
+    {
+        return view('reportes');
+    }
 
-    // Prestamos activos
-    public function prestamosActivos()
+    public function prestamosPorEmpleado()
     {
         $prestamoModel = new PrestamoModel();
-        $data['prestamosActivos'] = $prestamoModel
-            ->select('prestamo.*, 
-                ROUND(SUM(abono.monto_capital), 2) as resto,
-                empleado.emp_nombre as nombreEmpleado,
-                COUNT(abono.id_prestamo) as abonos')
-            ->join('abono', 'prestamo.id_prestamo = abono.id_prestamo')
-            ->join('empleado', 'empleado.id_empleado = prestamo.id_empleado')
-            ->groupBy('prestamo.id_prestamo')
-            ->having('resto >', 0)
+        $data['prestamosPorEmpleado'] = $prestamoModel
+            ->select('empleado.emp_nombre,
+                COUNT(prestamo.id_empleado) as prestamos,
+                COUNT(prestamo.estado = "APROBADO" or null) as aprobados')
+            ->join('empleado',  'empleado.id_empleado = prestamo.id_empleado')
+            ->groupBy('prestamo.id_empleado')
+            ->orderBy('prestamos', 'desc')
             ->paginate(25);
         $data['pager'] = $prestamoModel->pager;
-        return view('reportePrestamosActivos', $data);
+        return view('reportePrestamosPorEmpleado', $data);
     }
-    // Intereses cobrados
+
     public function interesesCobrados()
     {
         $abonoModel = new AbonoModel();
         $data['interesesCobrados'] = $abonoModel
-            ->select("id_abono, 
-                DATE_FORMAT(abono.abn_fecha, '%Y-%m') as periodo, 
-                COUNT(DATE_FORMAT(abono.abn_fecha, '%Y-%m')) as abonos, 
-                ROUND(SUM(monto_interes), 2) as intereses,
-                ROUND(SUM(montototal)) as total")
-            ->groupBy("DATE_FORMAT(abono.abn_fecha, '%Y%m')")
+            ->select('abono.id_abono,
+                DATE_FORMAT(abono.abn_fecha, "%Y-%m") as periodo,
+                COUNT(DATE_FORMAT(abono.abn_fecha, "%Y-%m")),
+                ROUND(SUM(monto_interes), 2) as  interesesCobrados,
+                ROUND(SUM(montototal), 2) as total')
+            ->groupBy('periodo')
             ->orderBy('abn_fecha', 'desc')
             ->paginate(25);
-        $data['pager'] = $abonoModel->pager;
-        return view('reporteInteresesCobrados', $data);
+        $data['pager']  = $abonoModel->pager;
+        return view('reporteInteresCobrados', $data);
     }
 }

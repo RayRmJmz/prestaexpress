@@ -10,21 +10,17 @@
             <tr>
                 <td>#</td>
                 <td>Nombre del empleado</td>
-                <td>Periodo</td>
-                <td>Abonos</td>
-                <td>Monto Préstamo</td>
-                <td>Monto resto</td>
+                <td>Prestamos solicitados</td>
+                <td>Aprobados</td>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($prestamosActivos as $i => $prestamo) : ?>
+            <?php foreach ($prestamosPorEmpleado as $i => $prestamo) : ?>
                 <tr>
-                    <td><?= $i; ?></td>
-                    <td><?= $prestamo->nombreEmpleado; ?></td>
-                    <td><?= $prestamo->fecha_ini_desc . ' - ' . $prestamo->fecha_fin_desc; ?></td>
-                    <td><?= $prestamo->abonos . ' de ' . $prestamo->duracion ?></td>
-                    <td><?= $prestamo->monto ?></td>
-                    <td><?= $prestamo->resto ?></td>
+                    <td><?= $i + 1; ?></td>
+                    <td><?= $prestamo->emp_nombre; ?></td>
+                    <td><?= $prestamo->prestamos; ?></td>
+                    <td><?= $prestamo->aprobados; ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
